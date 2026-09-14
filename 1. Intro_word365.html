@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Historia de Word | SENA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --word: #2b579a;
+  --word-claro: #4a7ecf;
+  --word-oscuro: #1a3a6e;
+  --sena-verde: #39a900;
+  --sena-naranja: #ff6b00;
+  --texto: #1a1a2e;
+  --texto-dim: #4a5568;
+  --texto-dimmer: #718096;
+  --bg: #f8fafc;
+  --borde: #e2e8f0;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',sans-serif; color:var(--texto); background:var(--bg); line-height:1.6; overflow-x:hidden; }
+
+/* TOPBAR */
+.topbar {
+  position:sticky; top:0; z-index:100;
+  background:rgba(255,255,255,0.96); backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--borde); padding:12px 20px;
+  display:flex; align-items:center; justify-content:space-between;
+  box-shadow:0 2px 8px rgba(0,0,0,0.05); flex-wrap:wrap; gap:10px;
+}
+.topbar-left { display:flex; align-items:center; gap:12px; }
+.sena-logo { background:var(--sena-verde); color:#fff; font-weight:900; font-size:15px; padding:6px 13px; border-radius:8px; letter-spacing:1px; }
+.topbar-brand { font-family:'Syne',sans-serif; font-size:13px; font-weight:700; }
+.topbar-sub { font-size:11px; color:var(--texto-dimmer); margin-top:1px; }
+.topbar-nav { display:flex; gap:16px; flex-wrap:wrap; }
+.topbar-nav a { text-decoration:none; font-size:12px; font-weight:600; color:var(--texto-dimmer); transition:color .2s; white-space:nowrap; }
+.topbar-nav a:hover { color:var(--word); }
+
+/* HERO */
+.hero {
+  background:linear-gradient(135deg,#0d1b3e 0%,#1a2f6e 60%,#1e3a8a 100%);
+  padding:72px 20px 60px; text-align:center; position:relative; overflow:hidden;
+}
+.hero::before { content:''; position:absolute; width:600px; height:600px; background:var(--word); border-radius:50%; top:-300px; left:-150px; opacity:0.2; filter:blur(90px); }
+.hero::after { content:''; position:absolute; width:400px; height:400px; background:var(--word-claro); border-radius:50%; bottom:-200px; right:-100px; opacity:0.15; filter:blur(80px); }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(43,87,154,0.25); border:1px solid rgba(74,126,207,0.4); color:#93b8f0; padding:7px 20px; border-radius:30px; font-size:11px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:24px; position:relative; z-index:1; }
+.hero-icon { font-size:clamp(48px,8vw,80px); margin-bottom:16px; position:relative; z-index:1; display:block; filter:drop-shadow(0 8px 24px rgba(43,87,154,0.5)); }
+.hero h1 { font-family:'Syne',sans-serif; font-size:clamp(32px,7vw,64px); font-weight:800; color:#fff; line-height:1.1; margin-bottom:16px; position:relative; z-index:1; }
+.hero h1 em { font-style:normal; background:linear-gradient(135deg,#93b8f0,var(--word-claro)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.hero-desc { font-size:clamp(14px,2.2vw,18px); color:rgba(255,255,255,0.72); max-width:600px; margin:0 auto 36px; position:relative; z-index:1; }
+
+/* STATS HERO */
+.hero-stats { display:flex; justify-content:center; gap:28px; flex-wrap:wrap; position:relative; z-index:1; }
+.hstat { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.13); border-radius:16px; padding:16px 28px; text-align:center; backdrop-filter:blur(8px); }
+.hstat-num { font-family:'Syne',sans-serif; font-size:30px; font-weight:800; color:#fff; display:block; }
+.hstat-label { font-size:12px; color:rgba(255,255,255,0.6); font-weight:500; }
+
+/* SECCIÓN GENÉRICA */
+.section { max-width:1040px; margin:0 auto; padding:60px 20px; }
+.section-tag { display:inline-flex; align-items:center; gap:8px; background:rgba(43,87,154,0.08); border:1px solid rgba(43,87,154,0.2); color:var(--word); padding:6px 16px; border-radius:20px; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:14px; }
+.section h2 { font-family:'Syne',sans-serif; font-size:clamp(24px,4vw,38px); font-weight:800; color:var(--texto); margin-bottom:12px; }
+.section h2 span { color:var(--word); }
+.section-intro { font-size:clamp(14px,1.8vw,17px); color:var(--texto-dim); max-width:700px; margin-bottom:40px; line-height:1.7; }
+
+/* CARD FUNDADORES */
+.founders-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; margin-bottom:40px; }
+.founder-card {
+  background:#fff; border:2px solid var(--borde); border-radius:20px;
+  padding:28px; position:relative; overflow:hidden;
+  transition:transform .2s, box-shadow .2s;
+}
+.founder-card:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(43,87,154,0.12); }
+.founder-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--word),var(--word-claro)); }
+.founder-avatar { font-size:52px; margin-bottom:16px; display:block; }
+.founder-name { font-family:'Syne',sans-serif; font-size:20px; font-weight:800; color:var(--texto); margin-bottom:4px; }
+.founder-role { font-size:12px; font-weight:700; color:var(--word); text-transform:uppercase; letter-spacing:1px; margin-bottom:12px; }
+.founder-desc { font-size:14px; color:var(--texto-dim); line-height:1.6; }
+
+/* TIMELINE */
+.timeline { position:relative; padding-left:32px; }
+.timeline::before { content:''; position:absolute; left:10px; top:0; bottom:0; width:2px; background:linear-gradient(180deg,var(--word),rgba(43,87,154,0.1)); }
+.titem { position:relative; margin-bottom:36px; }
+.titem::before { content:''; position:absolute; left:-28px; top:6px; width:14px; height:14px; background:var(--word); border-radius:50%; border:3px solid #fff; box-shadow:0 0 0 2px var(--word); }
+.titem-year { display:inline-flex; align-items:center; background:var(--word); color:#fff; padding:3px 12px; border-radius:20px; font-size:12px; font-weight:800; margin-bottom:8px; letter-spacing:1px; }
+.titem-title { font-family:'Syne',sans-serif; font-size:18px; font-weight:800; color:var(--texto); margin-bottom:6px; }
+.titem-desc { font-size:14px; color:var(--texto-dim); line-height:1.6; }
+.titem-highlight { display:inline-flex; align-items:center; gap:6px; background:rgba(43,87,154,0.06); border:1px solid rgba(43,87,154,0.15); color:var(--word); padding:4px 12px; border-radius:20px; font-size:12px; font-weight:600; margin-top:8px; }
+
+/* VERSIONES GRID */
+.versions-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:16px; }
+.version-card {
+  background:#fff; border:2px solid var(--borde); border-radius:16px;
+  padding:20px; text-align:center; transition:all .2s;
+  cursor:default;
+}
+.version-card:hover { border-color:var(--word); transform:translateY(-2px); box-shadow:0 8px 20px rgba(43,87,154,0.1); }
+.version-card.actual { border-color:var(--word); background:linear-gradient(135deg,rgba(43,87,154,0.04),#fff); }
+.v-year { font-size:11px; font-weight:700; color:var(--texto-dimmer); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
+.v-name { font-family:'Syne',sans-serif; font-size:17px; font-weight:800; color:var(--texto); margin-bottom:8px; }
+.v-desc { font-size:12px; color:var(--texto-dim); line-height:1.5; }
+.v-badge { display:inline-block; background:var(--word); color:#fff; font-size:10px; font-weight:700; padding:2px 10px; border-radius:20px; margin-top:8px; letter-spacing:1px; }
+
+/* FEATURES GRID */
+.features-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:20px; }
+.feat-card {
+  background:#fff; border:2px solid var(--borde); border-radius:18px;
+  padding:24px; display:flex; gap:16px; align-items:flex-start;
+  transition:all .2s;
+}
+.feat-card:hover { border-color:var(--word); box-shadow:0 6px 20px rgba(43,87,154,0.08); }
+.feat-icon { font-size:32px; flex-shrink:0; }
+.feat-title { font-family:'Syne',sans-serif; font-size:15px; font-weight:800; color:var(--texto); margin-bottom:5px; }
+.feat-desc { font-size:13px; color:var(--texto-dim); line-height:1.5; }
+
+/* DATO CURIOSO */
+.dato-box {
+  background:linear-gradient(135deg,rgba(43,87,154,0.07),rgba(74,126,207,0.03));
+  border:2px solid rgba(43,87,154,0.18);
+  border-radius:20px; padding:28px 32px;
+  display:flex; gap:18px; align-items:flex-start; margin-bottom:24px;
+}
+.dato-icon { font-size:36px; flex-shrink:0; }
+.dato-title { font-family:'Syne',sans-serif; font-size:17px; font-weight:800; color:var(--word); margin-bottom:6px; }
+.dato-text { font-size:14px; color:var(--texto-dim); line-height:1.6; }
+.dato-text strong { color:var(--texto); }
+
+/* SEPARADOR */
+.sep { height:2px; background:linear-gradient(90deg,transparent,var(--borde),transparent); margin:0; }
+
+/* FOOTER */
+footer { background:var(--texto); text-align:center; padding:28px; font-size:12px; color:rgba(255,255,255,0.55); line-height:2; margin-top:60px; }
+footer span { color:#fff; font-weight:700; }
+
+/* REVEAL */
+.reveal { opacity:0; transform:translateY(24px); transition:opacity .55s ease,transform .55s ease; }
+.reveal.in { opacity:1; transform:translateY(0); }
+.reveal-delay-1 { transition-delay:.1s; }
+.reveal-delay-2 { transition-delay:.2s; }
+.reveal-delay-3 { transition-delay:.3s; }
+
+/* BG ALTERNADO */
+.bg-alt { background:#fff; }
+
+@media(max-width:640px){
+  .topbar { flex-direction:column; align-items:flex-start; }
+  .hero-stats { gap:12px; }
+  .dato-box { flex-direction:column; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<nav class="topbar">
+  <div class="topbar-left">
+    <div class="sena-logo">SENA</div>
+    <div>
+      <div class="topbar-brand">Prevención y Control Ambiental · Sesión Word</div>
+      <div class="topbar-sub">CADP del Huila · Ficha 3410069</div>
+    </div>
+  </div>
+  <div class="topbar-nav">
+    <a href="#origen">Origen</a>
+    <a href="#fundadores">Fundadores</a>
+    <a href="#evolucion">Evolución</a>
+    <a href="#versiones">Versiones</a>
+    <a href="#hoy">Word Hoy</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">📄 Sesión introductoria</div>
+  <span class="hero-icon">📝</span>
+  <h1>Conoce<br><em>Microsoft Word</em></h1>
+  <p class="hero-desc">El procesador de textos que revolucionó la escritura. Hoy conocerás su historia, su evolución y por qué sigue siendo la herramienta número uno del mundo.</p>
+  <div class="hero-stats">
+    <div class="hstat"><span class="hstat-num">42+</span><span class="hstat-label">Años de historia</span></div>
+    <div class="hstat"><span class="hstat-num">1.2B</span><span class="hstat-label">Usuarios activos</span></div>
+    <div class="hstat"><span class="hstat-num">90%</span><span class="hstat-label">Cuota de mercado</span></div>
+    <div class="hstat"><span class="hstat-num">1983</span><span class="hstat-label">Año de nacimiento</span></div>
+  </div>
+</div>
+
+<!-- ORIGEN -->
+<div class="section" id="origen">
+  <div class="section-tag">🌱 El comienzo</div>
+  <h2>¿Por qué se <span>inventó</span> Word?</h2>
+  <p class="section-intro reveal">En los años 80, escribir documentos era lento y complicado: se usaban máquinas de escribir que no permitían correcciones fáciles, o programas básicos de computadora sin formato visual. Word nació para darle a cualquier persona el poder de crear documentos profesionales desde una PC.</p>
+
+  <div class="dato-box reveal">
+    <span class="dato-icon">⌨️</span>
+    <div>
+      <div class="dato-title">El problema de las máquinas de escribir</div>
+      <div class="dato-text">Antes de Word, escribir un documento formal requería una <strong>máquina de escribir</strong>. Cada error significaba reescribir la página completa o usar líquido corrector. No había copiar y pegar, no había formato automático, no había corrector ortográfico. Los primeros procesadores de texto digitales (como WordStar) eran difíciles de usar y requerían memorizar comandos complejos. <strong>Word simplificó todo esto</strong> al mostrar en pantalla exactamente lo que saldría impreso — el concepto WYSIWYG (What You See Is What You Get).</div>
+    </div>
+  </div>
+
+  <div class="dato-box reveal">
+    <span class="dato-icon">🎯</span>
+    <div>
+      <div class="dato-title">El nombre "Word"</div>
+      <div class="dato-text">El nombre completo original era <strong>"Multi-Tool Word"</strong> porque era parte de una suite de programas de productividad. Más tarde se simplificó a solo <em>"Microsoft Word"</em>. El nombre es directo: es una herramienta para trabajar con <strong>palabras</strong> (words en inglés). Simple, memorable y claro en su propósito.</div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"></div>
+
+<!-- FUNDADORES -->
+<div class="section bg-alt" id="fundadores">
+  <div class="section-tag">👥 Las personas detrás</div>
+  <h2>Los <span>creadores</span> de Word</h2>
+  <p class="section-intro reveal">Dos brillantes ingenieros de Microsoft construyeron la primera versión de lo que se convertiría en el procesador de textos más usado del mundo.</p>
+
+  <div class="founders-grid">
+    <div class="founder-card reveal">
+      <span class="founder-avatar">👨‍💻</span>
+      <div class="founder-name">Charles Simonyi</div>
+      <div class="founder-role">Arquitecto principal</div>
+      <div class="founder-desc">Ingeniero húngaro-estadounidense que trabajó en <strong>Xerox PARC</strong> (donde se inventó la interfaz gráfica) antes de llegar a Microsoft. Simonyi dirigió el desarrollo de Word y Excel. Su visión era crear software que cualquiera pudiera usar sin ser programador. Más tarde se convirtió en multimillonario y en <strong>turista espacial</strong> — viajó dos veces a la Estación Espacial Internacional.</div>
+    </div>
+    <div class="founder-card reveal reveal-delay-1">
+      <span class="founder-avatar">👨‍💼</span>
+      <div class="founder-name">Richard Brodie</div>
+      <div class="founder-role">Programador principal</div>
+      <div class="founder-desc">Fue <strong>el empleado número 77 de Microsoft</strong>. Brodie escribió gran parte del código de la primera versión de Word junto a Simonyi. Después de su tiempo en Microsoft, se hizo famoso en otro campo completamente distinto: se convirtió en <strong>jugador profesional de póker</strong> y ganó varios torneos importantes. Un ejemplo perfecto de que la programación y el póker comparten habilidades: lógica, estrategia y toma de decisiones.</div>
+    </div>
+  </div>
+
+  <div class="dato-box reveal">
+    <span class="dato-icon">💼</span>
+    <div>
+      <div class="dato-title">Word nació dentro de Microsoft, no fue una adquisición</div>
+      <div class="dato-text">A diferencia de PowerPoint (que Microsoft compró en 1987), <strong>Word fue desarrollado internamente</strong> desde el principio por el equipo de Simonyi en las oficinas de Microsoft. La primera versión para MS-DOS salió en <strong>octubre de 1983</strong>, y aunque la competencia era feroz (WordPerfect y WordStar dominaban el mercado), Word eventualmente los superó a todos gracias a su enfoque en la <strong>interfaz gráfica</strong> y su integración con Windows.</div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"></div>
+
+<!-- EVOLUCIÓN TIMELINE -->
+<div class="section" id="evolucion">
+  <div class="section-tag">📅 A través del tiempo</div>
+  <h2>La <span>evolución</span> de Word</h2>
+  <p class="section-intro reveal">Desde un programa de línea de comandos hasta el editor inteligente con IA que usamos hoy. Más de 40 años de innovación.</p>
+
+  <div class="timeline">
+    <div class="titem reveal">
+      <span class="titem-year">1983</span>
+      <div class="titem-title">Word 1.0 para MS-DOS — El origen 🖥️</div>
+      <div class="titem-desc">La primera versión era para <strong>MS-DOS</strong> (sistema operativo de texto antes de Windows). No tenía mouse — todo se hacía con teclado usando comandos. Aún así, fue innovador porque mostraba <strong>negrita y cursiva en pantalla</strong>, algo que la competencia no hacía. Venía en <strong>dos disquetes de 5¼ pulgadas</strong>.</div>
+      <span class="titem-highlight">Solo teclado · Formato visual · MS-DOS</span>
+    </div>
+    <div class="titem reveal">
+      <span class="titem-year">1985</span>
+      <div class="titem-title">Word 1.0 para Macintosh — El salto gráfico 🖱️</div>
+      <div class="titem-desc">La primera versión con <strong>interfaz gráfica real</strong>. Aprovechó el mouse y las ventanas del Macintosh de Apple. Aquí nació el concepto <strong>WYSIWYG completo</strong> — lo que ves en pantalla es exactamente lo que saldrá impreso. Incluía <strong>múltiples fuentes tipográficas</strong> y tamaños. Esta versión fue la que empezó a hacer popular a Word.</div>
+      <span class="titem-highlight">Primera interfaz gráfica · Mouse · WYSIWYG real</span>
+    </div>
+    <div class="titem reveal">
+      <span class="titem-year">1989</span>
+      <div class="titem-title">Word para Windows 1.0 — La apuesta por Windows 🪟</div>
+      <div class="titem-desc">Primera versión para <strong>Windows 3.0</strong>. En ese momento Windows no era popular aún, pero Microsoft apostó fuerte. Esta decisión estratégica fue clave: cuando Windows explotó en popularidad en los 90, Word ya estaba optimizado y listo. Incluía <strong>tablas, corrector ortográfico y vista previa de impresión</strong>.</div>
+      <span class="titem-highlight">Llega a Windows · Tablas · Corrector ortográfico</span>
+    </div>
+    <div class="titem reveal">
+      <span class="titem-year">1995</span>
+      <div class="titem-title">Word 95 — El estándar global 🌍</div>
+      <div class="titem-desc">Parte de <strong>Office 95</strong>. Esta versión consolidó a Word como <strong>el procesador de textos número uno del mundo</strong>. WordPerfect y otros competidores empezaron a perder terreno rápidamente. Se agregó <strong>autoguardado</strong>, WordArt (textos con efectos visuales) y mejor integración con Excel y PowerPoint.</div>
+      <span class="titem-highlight">Líder mundial · Office 95 · WordArt · Autoguardado</span>
+    </div>
+    <div class="titem reveal">
+      <span class="titem-year">2003</span>
+      <div class="titem-title">Word 2003 — El panel de tareas 📋</div>
+      <div class="titem-desc">Se introduce el <strong>panel de tareas lateral</strong> que facilitaba acciones comunes. Mayor enfoque en <strong>compatibilidad XML</strong> para intercambio de documentos. Esta fue la última versión antes del gran rediseño de interfaz. Muchas empresas la usaron durante años porque era estable y familiar.</div>
+      <span class="titem-highlight">Panel de tareas · XML · Máxima estabilidad</span>
+    </div>
+    <div class="titem reveal">
+      <span class="titem-year">2007</span>
+      <div class="titem-title">Word 2007 — La revolución de la Cinta 🎀</div>
+      <div class="titem-desc">El cambio más radical en la historia de Word. Se eliminaron los menús tradicionales y se introdujo la <strong>Cinta de opciones (Ribbon)</strong> con pestañas que aún usamos hoy. Nuevo formato <strong>.docx</strong> basado en XML que reemplazó el antiguo .doc. <strong>Temas y estilos rápidos</strong> para diseño profesional instantáneo. Hubo resistencia inicial, pero se convirtió en el nuevo estándar.</div>
+      <span class="titem-highlight">Ribbon · Formato .docx · Temas · Estilos rápidos</span>
+    </div>
+    <div class="titem reveal">
+      <span class="titem-year">2013</span>
+      <div class="titem-title">Word 2013 — La nube y la lectura 📖</div>
+      <div class="titem-desc">Primera integración real con <strong>OneDrive</strong> — los documentos se guardan automáticamente en la nube. <strong>Modo lectura</strong> optimizado que esconde la interfaz para leer documentos largos sin distracciones. Apertura y edición de <strong>PDF directamente en Word</strong>. Soporte para pantallas táctiles.</div>
+      <span class="titem-highlight">OneDrive · Modo lectura · Editar PDF · Táctil</span>
+    </div>
+    <div class="titem reveal">
+      <span class="titem-year">2016</span>
+      <div class="titem-title">Word 2016 — Colaboración real ⚡</div>
+      <div class="titem-desc"><strong>Coautoría en tiempo real</strong> — varias personas pueden editar el mismo documento simultáneamente y ver los cambios de los demás al instante. <strong>Editor inteligente</strong> que sugiere mejoras de estilo y gramática. Búsqueda inteligente integrada con Bing. Ink para escribir y dibujar con lápiz digital.</div>
+      <span class="titem-highlight">Coautoría · Editor inteligente · Búsqueda · Ink</span>
+    </div>
+    <div class="titem reveal">
+      <span class="titem-year">2019</span>
+      <div class="titem-title">Word 2019 — Foco e iconos SVG 🎨</div>
+      <div class="titem-desc"><strong>Modo enfoque</strong> que oculta todo excepto el texto para concentrarse mejor. Biblioteca de <strong>iconos SVG</strong> y modelos 3D. Mejor <strong>traducción automática</strong> de documentos completos. Mejoras en accesibilidad con el verificador de accesibilidad y narrador mejorado.</div>
+      <span class="titem-highlight">Modo enfoque · Iconos SVG · Traducción · Accesibilidad</span>
+    </div>
+    <div class="titem reveal">
+      <span class="titem-year">2021–Hoy</span>
+      <div class="titem-title">Word 365 — Inteligencia Artificial 🤖</div>
+      <div class="titem-desc">La versión actual. <strong>Copilot con IA</strong> puede escribir, resumir y reescribir documentos desde instrucciones en lenguaje natural. <strong>Dictado por voz mejorado</strong> con comandos. <strong>Editor Premium</strong> con sugerencias de estilo profesional. <strong>Siempre actualizado</strong> — no hay que comprar nuevas versiones. Funciona en <strong>navegador, escritorio y móvil</strong> con sincronización total.</div>
+      <span class="titem-highlight">Copilot IA · Dictado avanzado · Editor Premium · Multiplataforma</span>
+    </div>
+  </div>
+</div>
+
+<div class="sep"></div>
+
+<!-- VERSIONES -->
+<div class="section bg-alt" id="versiones">
+  <div class="section-tag">📦 Todas las versiones</div>
+  <h2>Las <span>versiones</span> de Word</h2>
+  <p class="section-intro reveal">Desde 1983 hasta hoy, cada versión agregó funcionalidades que hoy damos por sentadas. Conoce el recorrido completo.</p>
+
+  <div class="versions-grid">
+    <div class="version-card reveal"><div class="v-year">1983</div><div class="v-name">Word 1.0</div><div class="v-desc">MS-DOS · Solo teclado</div></div>
+    <div class="version-card reveal reveal-delay-1"><div class="v-year">1985</div><div class="v-name">Word 1.0 Mac</div><div class="v-desc">Primera interfaz gráfica</div></div>
+    <div class="version-card reveal reveal-delay-2"><div class="v-year">1989</div><div class="v-name">Word Win 1.0</div><div class="v-desc">Llega a Windows</div></div>
+    <div class="version-card reveal"><div class="v-year">1991</div><div class="v-name">Word 2.0</div><div class="v-desc">Funciones de edición avanzadas</div></div>
+    <div class="version-card reveal reveal-delay-1"><div class="v-year">1993</div><div class="v-name">Word 6.0</div><div class="v-desc">Primera versión multiplataforma</div></div>
+    <div class="version-card reveal reveal-delay-2"><div class="v-year">1995</div><div class="v-name">Word 95</div><div class="v-desc">Líder mundial · WordArt</div></div>
+    <div class="version-card reveal"><div class="v-year">1997</div><div class="v-name">Word 97</div><div class="v-desc">Asistente de Office · VBA</div></div>
+    <div class="version-card reveal reveal-delay-1"><div class="v-year">2000</div><div class="v-name">Word 2000</div><div class="v-desc">HTML y Web · Portapapeles</div></div>
+    <div class="version-card reveal reveal-delay-2"><div class="v-year">2003</div><div class="v-name">Word 2003</div><div class="v-desc">Panel de tareas · XML</div></div>
+    <div class="version-card reveal"><div class="v-year">2007</div><div class="v-name">Word 2007</div><div class="v-desc">Ribbon · .docx · Temas</div></div>
+    <div class="version-card reveal reveal-delay-1"><div class="v-year">2010</div><div class="v-name">Word 2010</div><div class="v-desc">Backstage · Capturas · Paste Preview</div></div>
+    <div class="version-card reveal reveal-delay-2"><div class="v-year">2013</div><div class="v-name">Word 2013</div><div class="v-desc">OneDrive · Modo lectura · PDF</div></div>
+    <div class="version-card reveal"><div class="v-year">2016</div><div class="v-name">Word 2016</div><div class="v-desc">Coautoría · Editor · Ink</div></div>
+    <div class="version-card reveal reveal-delay-1"><div class="v-year">2019</div><div class="v-name">Word 2019</div><div class="v-desc">Modo enfoque · SVG · Traducción</div></div>
+    <div class="version-card actual reveal reveal-delay-2"><div class="v-year">2021 – HOY</div><div class="v-name">Word 365</div><div class="v-desc">Copilot IA · Dictado · Editor Premium · Siempre actualizado</div><div class="v-badge">✨ VERSIÓN ACTUAL</div></div>
+  </div>
+</div>
+
+<div class="sep"></div>
+
+<!-- WORD HOY -->
+<div class="section" id="hoy">
+  <div class="section-tag">⚡ Word 365</div>
+  <h2>Word <span>hoy</span> — ¿Qué puede hacer?</h2>
+  <p class="section-intro reveal">La versión actual de Word 365 va mucho más allá de escribir texto. Es un ecosistema completo de creación de documentos con inteligencia artificial integrada.</p>
+
+  <div class="features-grid">
+    <div class="feat-card reveal">
+      <span class="feat-icon">🤖</span>
+      <div>
+        <div class="feat-title">Copilot (IA generativa)</div>
+        <div class="feat-desc">Escribe "Resume este documento en 3 párrafos" o "Redacta una carta formal de solicitud" y Copilot lo hace. Puede crear, resumir, reescribir y transformar documentos con instrucciones en lenguaje natural.</div>
+      </div>
+    </div>
+    <div class="feat-card reveal reveal-delay-1">
+      <span class="feat-icon">✍️</span>
+      <div>
+        <div class="feat-title">Editor con IA</div>
+        <div class="feat-desc">Corrector ortográfico y gramatical avanzado que entiende contexto. Sugiere sinónimos, mejora de estilo, tono profesional y claridad. Detecta lenguaje no inclusivo y ofrece alternativas.</div>
+      </div>
+    </div>
+    <div class="feat-card reveal reveal-delay-2">
+      <span class="feat-icon">🎤</span>
+      <div>
+        <div class="feat-title">Dictado por voz</div>
+        <div class="feat-desc">Escribe hablando. Incluye comandos de voz para formato: "punto", "nueva línea", "negrita", "elimina eso". Funciona en más de 60 idiomas con precisión profesional.</div>
+      </div>
+    </div>
+    <div class="feat-card reveal">
+      <span class="feat-icon">👥</span>
+      <div>
+        <div class="feat-title">Coautoría en tiempo real</div>
+        <div class="feat-desc">Múltiples personas editan el mismo documento simultáneamente. Ves los cambios de otros al instante y los cursores de cada persona con su nombre. Como Google Docs pero en Word.</div>
+      </div>
+    </div>
+    <div class="feat-card reveal reveal-delay-1">
+      <span class="feat-icon">🌍</span>
+      <div>
+        <div class="feat-title">Traductor integrado</div>
+        <div class="feat-desc">Traduce documentos completos o texto seleccionado a más de 70 idiomas manteniendo el formato original. Usa IA para traducción contextual más precisa que Google Translate.</div>
+      </div>
+    </div>
+    <div class="feat-card reveal reveal-delay-2">
+      <span class="feat-icon">📖</span>
+      <div>
+        <div class="feat-title">Lector inmersivo</div>
+        <div class="feat-desc">Herramienta de accesibilidad que lee el texto en voz alta, divide palabras en sílabas, resalta partes gramaticales y ajusta el espaciado. Ideal para personas con dislexia o dificultades de lectura.</div>
+      </div>
+    </div>
+    <div class="feat-card reveal">
+      <span class="feat-icon">📱</span>
+      <div>
+        <div class="feat-title">Multiplataforma total</div>
+        <div class="feat-desc">Funciona en Windows, Mac, iPad, iPhone, Android y navegador web. Empiezas un documento en el computador y lo terminas en el celular. Todo se sincroniza automáticamente vía OneDrive.</div>
+      </div>
+    </div>
+    <div class="feat-card reveal reveal-delay-1">
+      <span class="feat-icon">🔗</span>
+      <div>
+        <div class="feat-title">Referencias y bibliografía automáticas</div>
+        <div class="feat-desc">Genera citas y bibliografías en formatos APA, MLA, Chicago, IEEE y más. Solo ingresas los datos y Word formatea todo correctamente. Esencial para trabajos académicos.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dato-box reveal" style="margin-top:32px;">
+    <span class="dato-icon">📊</span>
+    <div>
+      <div class="dato-title">La dominación de Word</div>
+      <div class="dato-text">Word tiene aproximadamente <strong>90% de cuota de mercado</strong> en procesadores de texto de escritorio. Se estima que hay más de <strong>1.200 millones de usuarios activos</strong> en el mundo. Prácticamente toda empresa, universidad y gobierno usa Word como estándar. Cuando alguien dice "mándame un Word", todos entienden que se refiere a un documento .docx — la marca se convirtió en sinónimo del producto.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Prevención y Control Ambiental · <span>Sesión 1 · Word 365</span></p>
+  <p>Centro Agroempresarial y Desarrollo Pecuario del Huila · <span>SENA</span></p>
+  <p>Instructor: <span>Julián Andrés Trujillo Morales</span> · Ficha <span>3410069</span></p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, { threshold:0.06 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if(t) t.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+  });
+</script>
+</body>
+</html>
